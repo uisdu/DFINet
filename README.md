@@ -1,2 +1,2 @@
 # FINet
-Code will be available upon publication.
+The code will be released at the end of September.
