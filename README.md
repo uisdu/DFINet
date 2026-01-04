@@ -15,7 +15,7 @@
   <img src="Fig/iter.png" width="800">
 </p>
 
-## 1.Training
+## 1.Train
 To train DFINet from scratch, run:
 ```bash
 python train.py
