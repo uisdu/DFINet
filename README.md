@@ -19,7 +19,7 @@
 To train DFINet from scratch, run:
 ```bash
 python train.py
-
+```
 
 ## 2.test
 
