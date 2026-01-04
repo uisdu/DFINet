@@ -23,7 +23,7 @@ python train.py
 
 ## 2.test
 Training logs and checkpoints are available at:
-- **百度网盘权重文件**: [log](https://pan.baidu.com/s/1pgqABDSE4PlWjrvKZTKPhg)  
+- **百度网盘权重文件**: [权重文件](https://pan.baidu.com/s/1pgqABDSE4PlWjrvKZTKPhg)  
   **提取密码**: `ekts`
   
 **This code is highly borrowed from FANet. Thanks to  Nikhil Kumar Tomar.
