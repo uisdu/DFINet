@@ -27,6 +27,7 @@ Training logs and checkpoints are available at:
   **Extraction code**: `ekts`
 
 ## Citation
+```bash
 @article{WU2026111958,
 title = {DFINet: Dynamic feedback iterative network for infrared small target detection},
 journal = {Pattern Recognition},
@@ -40,4 +41,4 @@ author = {Jing Wu and Changhai Luo and Zhaobing Qiu and Liqiong Chen and Rixiang
 keywords = {Feedback iteration, Infrared small target detection, Feature mining, Error correction},
 abstract = {Recently, deep learning-based methods have made impressive progress in infrared small target detection (IRSTD). However, the weak and variable nature of small targets constrains the feature extraction and scene adaptation of existing methods, leading to low data utilization and poor robustness. To address this issue, we innovatively introduce the feedback mechanism into IRSTD and propose the dynamic feedback iterative network (DFINet). The main motivation is to guide the model training and prediction utilizing the history prediction mask (HPMK) of previous rounds. On the one hand, in the training phase, DFINet can further mine the key features of real targets by training in multiple iterations with limited data; on the other hand, in the prediction phase, DFINet can correct the wrong results through feedback iterative to improve the model robustness. Specifically, we first propose the dynamic feedback feature fusion module (DFFFM), which dynamically interacts HPMK with feature maps through a hard attention mechanism to guide feature mining and error correction. Then, for better feature extraction, the cascaded hybrid pyramid pooling module (CHPP) is devised to capture both global and local information. Finally, we propose the dynamic semantic fusion module (DSFM), which innovatively utilizes feedback information to guide the fusion of high-level and low-level features for better feature representation in different scenarios. Extensive experimental results on publicly available datasets of NUDT-SIRST, IRSTD-1k, and SIRST Aug show that DFINet outperforms several state-of-the-art methods and achieves superior detection performance. Our code will be publicly available at https://github.com/uisdu/DFINet.}
 }
-
+```
