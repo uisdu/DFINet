@@ -5,4 +5,4 @@ paper：https://www.sciencedirect.com/science/article/abs/pii/S0031320325006181
 
 ## Framework of DFINet
 
-![DFINet framework](Fig/fig_2.png)
+![DFINet framework](Fig/Figure_2.png)
