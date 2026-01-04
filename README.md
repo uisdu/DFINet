@@ -23,8 +23,8 @@ python train.py
 
 ## 2.test
 Training logs and checkpoints are available at:
-- **Baidu Netdisk**: [log](https://pan.baidu.com/s/1pgqABDSE4PlWjrvKZTKPhg)  
-  **Extraction code**: `ekts`
+- **百度网盘权重文件**: [log](https://pan.baidu.com/s/1pgqABDSE4PlWjrvKZTKPhg)  
+  **提取密码**: `ekts`
 
 ## Citation
 ```bash
