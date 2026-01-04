@@ -22,6 +22,8 @@ python train.py
 ```
 
 ## 2.test
-
+Training logs and checkpoints are available at:
+- **Baidu Netdisk**: [log](https://pan.baidu.com/s/1pgqABDSE4PlWjrvKZTKPhg)  
+  **Extraction code**: `ekts`
 
 
