@@ -30,6 +30,8 @@ Training logs and checkpoints are available at:
 
 **This code is highly borrowed from IRSTD-Toolbox. Thanks to Xinyi Ying.**
 
+**This code is highly borrowed from [P2P-Net](https://github.com/Anton-Nrx/P2P-HDNet.). Thanks to Rixiang Ni.**
+
 ## Citation
 ```bash
 @article{WU2026111958,
