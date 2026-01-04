@@ -26,7 +26,7 @@ Training logs and checkpoints are available at:
 - **百度网盘权重文件**: [权重文件](https://pan.baidu.com/s/1pgqABDSE4PlWjrvKZTKPhg)  
   **提取密码**: `ekts`
   
-**This code is highly borrowed from FANet. Thanks to Nikhil Kumar Tomar.**  
+**This code is highly borrowed from [FANet](https://github.com/nikhilroxtomar/FANet). Thanks to Nikhil Kumar Tomar.**  
 **This code is highly borrowed from IRSTD-Toolbox. Thanks to Xinyi Ying.**
 
 ## Citation
