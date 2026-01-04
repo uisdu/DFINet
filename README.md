@@ -25,7 +25,8 @@ python train.py
 Training logs and checkpoints are available at:
 - **百度网盘权重文件**: [log](https://pan.baidu.com/s/1pgqABDSE4PlWjrvKZTKPhg)  
   **提取密码**: `ekts`
-
+  
+*This code is highly borrowed from FANet. Thanks to Xinyi Ying.
 ## Citation
 ```bash
 @article{WU2026111958,
