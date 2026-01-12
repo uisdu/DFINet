@@ -18,19 +18,19 @@ def get_args():
 
     # ===== Dataset =====
     parser.add_argument("--data_path", type=str,
-                        default="/home/visionx/EXT-4/lcj/new/SIRST-UAVB",
+                        default="/home/visionx/EXT-4/lcj/new/NUDT-SIRST",
                         help="Dataset root path")
 
     # ===== Image =====
     parser.add_argument("--img_size", type=int, nargs=2,
-                        default=[640, 512],
+                        default=[256, 256],
                         help="Input image size (W H)")
 
     # ===== Model =====
     parser.add_argument("--num_iter", type=int, default=8,
                         help="Number of iterative refinements")
     parser.add_argument("--checkpoint", type=str,
-                        default="/home/visionx/EXT-4/lcj/FIFLNet-3/uavb-update2/checkpoint.pth",
+                        default="/home/visionx/EXT-4/lcj/DFINet/NUDT-SIRST/checkpoint.pth",
                         help="Model checkpoint path")
 
     # ===== Device =====
@@ -39,7 +39,7 @@ def get_args():
 
     # ===== Output =====
     parser.add_argument("--save_csv", type=str,
-                        default="/home/visionx/EXT-4/lcj/FIFLNet-3/uavb-update2/test_results.csv",
+                        default="/home/visionx/EXT-4/lcj/DFINet/NUDT-SIRST/test_results.csv",
                         help="CSV file to save results")
 
     return parser.parse_args()
