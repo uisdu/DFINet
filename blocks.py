@@ -291,6 +291,8 @@ class DSFM(nn.Module):
              nn.Conv2d(dim, 1, kernel_size=1, padding=0),
             nn.Sigmoid()
         )
+        self.a=0.90
+        self.b=0.05
        
 
     def forward(self, in_feats,m):
@@ -309,6 +311,6 @@ class DSFM(nn.Module):
         attn = self.mlp(feats_sum)
         attn = self.softmax(attn.view(B, self.height, C, 1, 1))
 
-        out = torch.sum(in_feats*attn, dim=1)
-        out=0.9*out+0.1*x_l +0.1*xl_h
+        out = torch.sum(in_feats*attn, dim=1) #必要时可以直接return out
+        out= self.a*out+ self.b*x_l +self.b*xl_h 
         return out
