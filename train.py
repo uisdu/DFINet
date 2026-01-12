@@ -23,17 +23,17 @@ def get_args():
 
     # ===== 基本路径 =====
     parser.add_argument('--data_path', type=str,
-                        default="/home/visionx/EXT-4/lcj/new/SIRST-UAVB")
+                        default="/home/visionx/EXT-4/lcj/new/NUDT-SIRST")
     parser.add_argument('--save_dir', type=str,
-                        default="/home/visionx/EXT-4/lcj/DFINet/SIRST-UAVB")
+                        default="/home/visionx/EXT-4/lcj/DFINet/NUDT-SIRST")
     parser.add_argument('--checkpoint', type=str,
-                        default="/home/visionx/EXT-4/lcj/DFINet/SIRST-UAVB/checkpoint.pth")
+                        default="/home/visionx/EXT-4/lcj/DFINet/NUDT-SIRST/checkpoint.pth")
 
     # ===== 训练参数 =====
     parser.add_argument('--epochs', type=int, default=300)
-    parser.add_argument('--batch_size', type=int, default=8)
+    parser.add_argument('--batch_size', type=int, default=10)
     parser.add_argument('--lr', type=float, default=0.00007)
-    parser.add_argument('--img_size', type=int, nargs=2, default=[640, 512])
+    parser.add_argument('--img_size', type=int, nargs=2, default=[256, 256])
 
     # ===== 设备 =====
     parser.add_argument('--gpu', type=int, default=3)
