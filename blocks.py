@@ -292,7 +292,7 @@ class DSFM(nn.Module):
             nn.Sigmoid()
         )
         self.a=0.90
-        self.b=0.05
+        self.b=0.10
        
 
     def forward(self, in_feats,m):
