@@ -20,11 +20,10 @@ To train DFINet from scratch, run:
 ```bash
 python train.py
 ```
-
 ## 2.test
 Training logs and checkpoints are available at:
-- **百度网盘权重文件**: [权重文件]( https://pan.baidu.com/s/1nsdU4Z446MFm8BiqksLeSw)  
-  **提取密码**: `qbiv`
+- **百度网盘权重文件**: [权重文件](https://pan.baidu.com/s/1Hqis60HFyzqIJ7dgC4A-Qg)  
+  **提取密码**: `9qy7`
   
 **This code is highly borrowed from [FANet](https://github.com/nikhilroxtomar/FANet). Thanks to Nikhil Kumar Tomar.**
 
