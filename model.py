@@ -1,0 +1,110 @@
+import torch
+import torch.nn as nn
+from blocks import *
+from thop import profile, clever_format
+class EncoderBlock(nn.Module):
+    def __init__(self, in_c, out_c, name=None):
+        super(EncoderBlock, self).__init__()
+
+        self.name = name
+        self.r1 = MDADRB(in_c, out_c)
+        self.r2 = ResidualBlock(out_c, out_c)
+        self.p1 = DFFFM(out_c, out_c)
+        self.pool = nn.MaxPool2d((2, 2))
+
+    def forward(self, inputs, masks):
+        x = self.r1(inputs)
+        x = self.r2(x)
+        p = self.p1(x, masks)
+        o = self.pool(p)
+        return o, x
+
+class EncoderBlock1(nn.Module):
+    def __init__(self, in_c, out_c, name=None):
+        super(EncoderBlock1, self).__init__()
+
+        self.name = name
+        self.r1 = MDADRB(in_c, out_c)
+        self.r2 = ResidualBlock(out_c, out_c)
+        self.p1 = DFFFM(out_c, out_c)
+        self.pool = nn.MaxPool2d((2, 2))
+        self.e5=  HPPM(256,(12,20),norm_layer=nn.BatchNorm2d,up_kwargs = {'mode': 'bilinear', 'align_corners': True})
+        self.e6=  HPPM(256,(12,20),norm_layer=nn.BatchNorm2d,up_kwargs = {'mode': 'bilinear', 'align_corners': True})
+
+    def forward(self, inputs, masks):
+        x = self.r1(inputs)
+        x = self.r2(x)
+        p = self.p1(x, masks)
+        o = self.pool(p)
+        o=self.e5(o)
+        o=self.e6(o)
+        return o, x
+
+
+class DecoderBlock(nn.Module):
+    def __init__(self, in_c, out_c, name=None):
+        super(DecoderBlock, self).__init__()
+
+        self.upsample = nn.ConvTranspose2d(in_c, in_c, kernel_size=4, stride=2, padding=1)
+        self.r1 =MDADRB(in_c+in_c, out_c)
+        self.r2 = ResidualBlock(out_c, out_c)
+        self.p1 = DFFFM(out_c, out_c)
+        self.b1= DSFM(in_c)
+    def forward(self, inputs, skip, masks):
+        x = self.upsample(inputs)
+        x1=([skip,x])
+        x1=self.b1(x1,masks)
+        x = torch.cat([x, x1], axis=1)
+        x = self.r1(x)
+        x = self.r2(x)
+        p = self.p1(x, masks)
+        return p
+class DFINet(nn.Module):
+    def __init__(self):
+        super(DFINet, self).__init__()
+
+
+        self.e1 = EncoderBlock(3, 32)
+        self.e2 = EncoderBlock(32, 64)
+        self.e3 = EncoderBlock(64, 128)
+        self.e4 = EncoderBlock1(128, 256)
+
+        self.d1 = DecoderBlock(256, 128)
+        self.d2 = DecoderBlock(128, 64)
+        self.d3 = DecoderBlock(64, 32)
+        self.d4 = DecoderBlock(32, 16)
+
+        self.output = nn.Conv2d(16, 1, kernel_size=1, padding=0)
+
+    def forward(self, x):
+        inputs, masks = x[0], x[1]
+
+        p1, s1 = self.e1(inputs, masks)
+        p2, s2 = self.e2(p1, masks)
+        p3, s3 = self.e3(p2, masks)
+        p4, s4 = self.e4(p3, masks)
+       
+
+        d1 = self.d1(p4, s4, masks)
+        d2 = self.d2(d1, s3, masks)
+        d3 = self.d3(d2, s2, masks)
+        d4 = self.d4(d3, s1, masks)
+
+        output = self.output(d4)
+
+        return output
+
+
+if __name__ == "__main__":
+    device = torch.device("cuda:3")
+
+    x = torch.randn(1, 3, 256, 256).to(device)
+    m = torch.randn(1, 1, 256, 256).to(device)
+
+    model = DFINet().to(device)
+    model.eval()
+    flops, params = profile(model, inputs=([x, m],), verbose=False)
+    flops, params = clever_format([flops, params], "%.3f")
+
+    print("Params:", params)
+    print("FLOPs:", flops)
