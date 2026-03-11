@@ -19,7 +19,7 @@ def get_args():
                         default="/home/LC/NUDT-SIRST/",
                         help="Dataset root path")
 
-    # ===== Image =====
+    # ===== Image ===== 记得按数据集原尺寸修改
     parser.add_argument("--img_size", type=int, nargs=2,
                         default=[256,256],
                         help="Input image size (W H)")
